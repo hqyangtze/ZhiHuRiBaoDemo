@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="vn9-fN-2mc" customClass="AFStartImageView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sb-xl-VGZ" customClass="AFWebImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="图片版权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTq-N2-Svo">
+                    <rect key="frame" x="301.5" y="631" width="53.5" height="16"/>
+                    <color key="backgroundColor" red="0.95673381979695427" green="0.95673381979695427" blue="0.95673381979695427" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="KTq-N2-Svo" secondAttribute="bottom" constant="20" id="5X7-CN-HeF"/>
+                <constraint firstAttribute="trailing" secondItem="KTq-N2-Svo" secondAttribute="trailing" constant="20" id="E3x-8k-TAX"/>
+                <constraint firstAttribute="trailing" secondItem="8sb-xl-VGZ" secondAttribute="trailing" id="Zef-K4-Nxd"/>
+                <constraint firstAttribute="bottom" secondItem="8sb-xl-VGZ" secondAttribute="bottom" id="mq7-qh-MU1"/>
+                <constraint firstItem="8sb-xl-VGZ" firstAttribute="top" secondItem="vn9-fN-2mc" secondAttribute="top" id="poS-he-B6K"/>
+                <constraint firstItem="8sb-xl-VGZ" firstAttribute="leading" secondItem="vn9-fN-2mc" secondAttribute="leading" id="tjw-yu-InB"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgImageView" destination="8sb-xl-VGZ" id="VEg-h5-s5q"/>
+                <outlet property="textLab" destination="KTq-N2-Svo" id="4n1-NJ-EKO"/>
+            </connections>
+            <point key="canvasLocation" x="-178" y="-232"/>
+        </view>
+    </objects>
+</document>

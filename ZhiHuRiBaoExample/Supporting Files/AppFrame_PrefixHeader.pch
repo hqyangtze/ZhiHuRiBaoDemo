@@ -1,0 +1,35 @@
+//
+//  AppFrame_PrefixHeader.pch
+//  AppFrame
+//
+//  Created by HQ on 2016/11/29.
+//  Copyright © 2016年 HQ. All rights reserved.
+//
+
+#ifndef AppFrame_PrefixHeader_pch
+#define AppFrame_PrefixHeader_pch
+
+#ifdef __OBJC__
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
+
+/// .h
+#import "APPFrameMacro.h"
+#import "FoundationHelper.h"
+#import "ViewHeader.h"
+
+//define this constant if you want to use Masonry without the 'mas_' prefix
+#define MAS_SHORTHAND
+//define this constant if you want to enable auto-boxing for default syntax
+#define MAS_SHORTHAND_GLOBALS
+#import <Masonry.h>
+#import <YYModel.h>
+#import <MJRefresh.h>
+#import "AFImageName.h"
+#import "AFNotificationName.h"
+#import "AFWebImageView.h"
+#endif
+
+#endif /* AppFrame_PrefixHeader_pch */
