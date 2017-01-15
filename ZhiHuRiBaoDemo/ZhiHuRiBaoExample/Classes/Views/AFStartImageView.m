@@ -30,13 +30,14 @@
 
 - (void)setUI{
     NSInteger rand = arc4random_uniform(11) % 11;
-    UIImage* palceHolder = [UIImage imageNamed:[NSString stringWithFormat:@"Launch_image_%zd",rand]];
+    UIImage* placeHolderImage = [UIImage imageNamed:[NSString stringWithFormat:@"Launch_image_%zd",rand]];
+    [self.bgImageView setImage:placeHolderImage];
     CGSize viewSize = [UIScreen mainScreen].bounds.size;
     NSString* imageScale = [NSString stringWithFormat:@"%zd*%zd",(NSUInteger)viewSize.width,(NSUInteger)viewSize.height];
     AFStartImageApi* startImageApi = [AFStartImageApi getModelWithImgScale:imageScale];
     [startImageApi startSuccessCall:^(id  _Nonnull responseJOSN, id  _Nonnull responseModel) {
         AFStartImageModel* model = responseModel;
-        [self.bgImageView setImageWithURLString:model.img.af_toSafeString placeholderImage:palceHolder];
+        [self.bgImageView setImageWithURLString:model.img.af_toSafeString placeholderImage:placeHolderImage];
         [self.textLab setText:model.text];
         [self amimationAndDisappear];
     } failureCall:^(NSError * _Nonnull error, NSDictionary * _Nonnull userInfo) {
