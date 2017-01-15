@@ -140,6 +140,12 @@
     if (self.pageControl) {
         self.pageControl.numberOfPages = modelArray.count;
     }
+    [self startAutoWithDuration:self.eachTime];
+}
+
+- (void)setCurrentIndex:(NSInteger)currentIndex{
+    _currentIndex = currentIndex;
+    self.pageControl.currentPage = currentIndex;
 }
 
 -(void)initScrollView{
