@@ -15,5 +15,6 @@
 #import "NSTimer+HQExtend.h"
 #import "NSObject+AFExtendForKVO.h"
 #import "NSArray+AppFrame.h"
+#import "NSDictionary+AppFrame.h"
 
 #endif /* FoundationHelper_h */

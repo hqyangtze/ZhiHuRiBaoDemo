@@ -17,7 +17,7 @@
  *
  *  @return NSDictionary
  */
-+ (NSDictionary *)dictionaryWithURLQuery:(NSString *)query
++ (NSDictionary *)af_dictionaryWithURLQuery:(NSString *)query
 {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     NSArray *parameters = [query componentsSeparatedByString:@"&"];
@@ -40,7 +40,7 @@
  *
  *  @return url 参数字符串
  */
-- (NSString *)URLQueryString
+- (NSString *)af_URLQueryString
 {
     NSMutableString *string = [NSMutableString string];
     for (NSString *key in [self allKeys]){

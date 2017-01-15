@@ -120,6 +120,11 @@ static const CGFloat kFootViewHeight = 44.0f;
     NSURL* URL = request.URL;
     NSString* URLString = URL.absoluteString;
     LOG(@"正在加载的URLString : %@", URLString);
+    /// 内嵌视频
+    NSDictionary* paras = [NSDictionary af_dictionaryWithURLQuery:URLString];
+    if (paras[@"auto"] || [URL.host isEqualToString:@"video.qq.com"]) {
+        return YES;
+    }
     if ([URLString hasPrefix:@"http://"] || [URLString hasPrefix:@"https://"]) {
         WebViewController* webVC = [WebViewController getController];
         webVC.URLString = URLString;
