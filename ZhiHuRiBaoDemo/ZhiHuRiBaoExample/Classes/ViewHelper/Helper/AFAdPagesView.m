@@ -160,7 +160,7 @@
     [self.currentView addSubview:self.currentIV];
     [self.scrollView addSubview:self.currentView];
 
-    self.nextView = [[UIView alloc]initWithFrame:CGRectMake(SELF_VIEW_WIDTH*2, 0, 0, SELF_VIEW_HEIGHT)];
+    self.nextView = [[UIView alloc]initWithFrame:CGRectMake(SELF_VIEW_WIDTH*2, 0, SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT)];
     self.nextView.clipsToBounds = YES;
 
     self.nextIV = [AFAdPageView getViewWithSize:itemSize];
@@ -184,17 +184,12 @@
 
 
 -(void)addNewAward{
-    self.currentIndex --;
-    if (self.currentIndex <0) {
-        if (self.modelArray) {
-            self.currentIndex = self.modelArray.count-1;
-        }
-    }
-
     [self.currentIV removeFromSuperview];
     [self.nextIV removeFromSuperview];
     [self.awardIV removeFromSuperview];
 
+
+    AFAdPageView* temView = self.nextIV;
     self.nextIV = self.currentIV;
     self.nextIV.center = CGPointMake(self.nextView.hq_width * 0.5, self.nextView.hq_height * 0.5);
     [self.nextView addSubview:self.nextIV];
@@ -203,8 +198,8 @@
     self.currentIV.center = CGPointMake(self.currentView.hq_width * 0.5, self.currentView.hq_height * 0.5);
     [self.currentView addSubview:self.currentIV];
 
-    CGSize itemSize = CGSizeMake(SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT);
-    self.awardIV = [AFAdPageView getViewWithSize:itemSize];
+    //CGSize itemSize = CGSizeMake(SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT);
+    self.awardIV = temView;
     if (self.modelArray) {
         if (self.currentIndex == 0) {
             [self.awardIV updateView:[self.modelArray lastObject]];
@@ -224,12 +219,7 @@
     [self.nextIV removeFromSuperview];
     [self.awardIV removeFromSuperview];
 
-    self.currentIndex ++;
-    if (self.modelArray) {
-        if (self.currentIndex > self.modelArray.count-1) {
-            self.currentIndex = 0;
-        }
-    }
+    AFAdPageView* temView = self.awardIV;
     self.awardIV = self.currentIV;
     self.awardIV.center = CGPointMake(self.awardView.hq_width * 0.5, self.awardView.hq_height * 0.5);
     [self.awardView addSubview:self.awardIV];
@@ -237,8 +227,8 @@
     self.currentIV = self.nextIV;
     self.currentIV.center = CGPointMake(self.currentView.hq_width * 0.5, self.currentView.hq_height * 0.5);
     [self.currentView addSubview:self.currentIV];
-    CGSize itemSize = CGSizeMake(SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT);
-    self.nextIV = [AFAdPageView getViewWithSize:itemSize];
+    //CGSize itemSize = CGSizeMake(SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT);
+    self.nextIV = temView;
     if (self.modelArray) {
         if (self.currentIndex == self.modelArray.count-1) {
             [self.nextIV updateView:self.modelArray.firstObject];
@@ -259,7 +249,7 @@
         CGFloat offSetX = scrollView.contentOffset.x - SELF_VIEW_WIDTH;
         //向前滑动
         if (offSetX<0) {
-            offSetX = (-offSetX);
+            offSetX = ABS(offSetX);
             CGRect frame = self.awardView.frame;
             frame.size.width = offSetX;
             frame.origin.x = SELF_VIEW_WIDTH - offSetX;
@@ -288,7 +278,7 @@
 }
 
 -(void)scrollViewWillBeginDecelerating: (UIScrollView *)scrollView{
-    //[scrollView setContentOffset:scrollView.contentOffset animated:NO];
+    [scrollView setContentOffset:scrollView.contentOffset animated:NO];
 }
 
 -(void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
@@ -312,6 +302,13 @@
 
 -(void)scrollViewMoveToAward{
     [self hidenDisplayImage:NO];
+    self.currentIndex --;
+    if (self.currentIndex < 0) {
+        if (self.modelArray) {
+            self.currentIndex = self.modelArray.count-1;
+        }
+    }
+
     self.pageControl.currentPage = self.currentIndex;
     [UIView animateWithDuration:.2 animations:^{
         self.scrollView.contentOffset = CGPointMake(0, 0);
@@ -321,10 +318,13 @@
 }
 
 -(void)scrollViewMoveToNext{
-    if (self.scrollTimer == nil) {
-        return;
-    }
     [self hidenDisplayImage:NO];
+    self.currentIndex ++;
+    if (self.currentIndex >= self.modelArray.count) {
+        if (self.modelArray) {
+            self.currentIndex = 0;
+        }
+    }
     self.pageControl.currentPage = self.currentIndex;
     [UIView animateWithDuration:.2 animations:^{
         self.scrollView.contentOffset = CGPointMake(SELF_VIEW_WIDTH*2, 0);
@@ -419,6 +419,7 @@
 }
 
 - (void)dealloc{
+    [self.tapGR removeTarget:self action:@selector(tapGRDidTap:)];
     [self.scrollView removeGestureRecognizer:self.tapGR];
     [self stopAutoScrollAnimation];
 }
