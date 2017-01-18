@@ -20,7 +20,7 @@
 #define HEADER_HEIGHT (200.0) /// 数据来源于知乎日报的接口
 static const CGFloat kFootViewHeight = 44.0f;
 
-@interface AFNewsDetailView ()<UIWebViewDelegate>{
+@interface AFNewsDetailView ()<UIWebViewDelegate,UIGestureRecognizerDelegate>{
     UIWebView* _webView;
     UIView*    _statusCoverView;
     UIView*    _footView;
@@ -29,6 +29,7 @@ static const CGFloat kFootViewHeight = 44.0f;
 
     /// 新闻model
     AFNewsDetailModel*      _detailModel;
+    UITapGestureRecognizer* _customGesture;
 }
 
 @property (nonatomic, copy) NSString* newsID;
@@ -37,6 +38,9 @@ static const CGFloat kFootViewHeight = 44.0f;
 /// 加载数据回调
 @property (nonatomic, copy) loadDataCall newdataCall;
 @property (nonatomic, copy) loadDataCall moredataCall;
+
+@property (nonatomic, copy) void (^clickImage)(NSString *URLString);
+@property (nonatomic, copy) NSString* imageString;
 
 @end
 @implementation AFNewsDetailView
@@ -103,7 +107,11 @@ static const CGFloat kFootViewHeight = 44.0f;
 
     _footView = [UIView hq_frameWithX:0 Y:SCREEN_HEIGHT - kFootViewHeight width:SCREEN_WIDTH height:kFootViewHeight];
     _footView.backgroundColor = WHITE_COLOR;
-    //[self addSubview:_footView];
+    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:nil action:nil];
+    [self addGestureRecognizer:gesture];
+
+    gesture.delegate = self;
+    _customGesture = gesture;
 }
 
 - (void)loadNewDataFromNetwork:(loadDataCall)newdataCall{
@@ -213,8 +221,32 @@ static const CGFloat kFootViewHeight = 44.0f;
     [[_webView.scrollView af_loadBackFooter] setTitle:footer forState:MJRefreshStateWillRefresh];
 }
 
-- (void)autoScrollToTop{
-    [_webView.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+- (void)didClickImageCall:(void (^)(NSString *))clickImage{
+    self.clickImage = clickImage;
+}
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        if (gestureRecognizer == _customGesture) {
+            CGPoint touchPoint = [touch locationInView:self];
+            NSString *imgURL = [NSString stringWithFormat:@"document.elementFromPoint(%f, %f).src", touchPoint.x, touchPoint.y];
+            NSString *URLString = [_webView stringByEvaluatingJavaScriptFromString:imgURL];
+            if (URLString.af_toSafeString.length > 0) {
+                self.imageString = URLString;
+            }
+        }
+    }
+    return YES;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+    if (gestureRecognizer == _customGesture) {
+        if (self.imageString) {
+            !self.clickImage ? : self.clickImage(self.imageString);
+            self.imageString = nil;
+        }
+    }
+    return NO;
 }
 
 - (void)dealloc{

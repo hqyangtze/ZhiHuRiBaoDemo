@@ -14,6 +14,9 @@ typedef void(^loadDataCall) (void);
 
 + (instancetype)getViewWithSize:(CGSize )size newsID:(NSString* )newsID needLoadInfo:(BOOL)need updateStatusStyle:(void(^)(BOOL isLight)) updateStatusCall;
 
+/// 点击图片回调
+- (void)didClickImageCall:(void(^)(NSString* URLString)) clickImage;
+
 /// 加载新的数据，不会显示提示信息
 - (void)resetNewsID:(NSString* )newsID;
 
@@ -26,8 +29,5 @@ typedef void(^loadDataCall) (void);
 /// 设置加载控件显示的文字(这里的代码写的不好啊）
 - (void)setLoadComponentInfoHeader:(NSString* )header footer:(NSString* )footer;
 
-
-/// 滚动到视图顶部
-- (void)autoScrollToTop;
 
 @end

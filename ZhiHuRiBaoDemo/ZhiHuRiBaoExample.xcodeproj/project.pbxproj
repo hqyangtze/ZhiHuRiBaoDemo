@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05145D9B1E2F62610060D2E8 /* AFNewsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05145D9A1E2F62610060D2E8 /* AFNewsImageView.m */; };
 		053D50CE1E2A5EB400176475 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 053D50CD1E2A5EB400176475 /* AppDelegate.m */; };
 		05820CC91E2A6ADC00B4A0B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05820CC71E2A6ADC00B4A0B0 /* LaunchScreen.storyboard */; };
 		05820CCA1E2A6ADC00B4A0B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820CC81E2A6ADC00B4A0B0 /* main.m */; };
@@ -76,6 +77,8 @@
 
 /* Begin PBXFileReference section */
 		0513F7C01E2A66070000663F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		05145D991E2F62610060D2E8 /* AFNewsImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNewsImageView.h; sourceTree = "<group>"; };
+		05145D9A1E2F62610060D2E8 /* AFNewsImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNewsImageView.m; sourceTree = "<group>"; };
 		053D50C61E2A5EB400176475 /* ZhiHuRiBaoExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhiHuRiBaoExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053D50CC1E2A5EB400176475 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		053D50CD1E2A5EB400176475 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -500,6 +503,8 @@
 				05820D461E2A6AEC00B4A0B0 /* AFDetailNewsHeaderView.xib */,
 				05820D471E2A6AEC00B4A0B0 /* AFNewsDetailView.h */,
 				05820D481E2A6AEC00B4A0B0 /* AFNewsDetailView.m */,
+				05145D991E2F62610060D2E8 /* AFNewsImageView.h */,
+				05145D9A1E2F62610060D2E8 /* AFNewsImageView.m */,
 				05820D491E2A6AEC00B4A0B0 /* AFShortNewsTableViewCell.h */,
 				05820D4A1E2A6AEC00B4A0B0 /* AFShortNewsTableViewCell.m */,
 				05820D4B1E2A6AEC00B4A0B0 /* AFShortNewsTableViewCell.xib */,
@@ -694,6 +699,7 @@
 				05820D4C1E2A6AEC00B4A0B0 /* BaseViewController.m in Sources */,
 				05820D4D1E2A6AEC00B4A0B0 /* CoreNavigationController.m in Sources */,
 				05820D591E2A6AEC00B4A0B0 /* NSString+AppFrame.m in Sources */,
+				05145D9B1E2F62610060D2E8 /* AFNewsImageView.m in Sources */,
 				05820D621E2A6AEC00B4A0B0 /* AFNewsDetailModel.m in Sources */,
 				05820D6C1E2A6AEC00B4A0B0 /* YTKNetworkAgent.m in Sources */,
 				053D50CE1E2A5EB400176475 /* AppDelegate.m in Sources */,

@@ -9,6 +9,7 @@
 #import "AFNewsDetailViewController.h"
 #import "AFNewsDetailView.h"
 #import "AFNewsModel.h"
+#import "AFNewsImageView.h"
 
 @interface AFNewsDetailViewController (){
 
@@ -59,6 +60,10 @@
         STRONG(weak_self)
         [strong_weak_self loadNextArticle];
     }];
+    [_currentView didClickImageCall:^(NSString *URLString) {
+        STRONG(weak_self)
+        [strong_weak_self showImageWithURLString:[URLString copy]];
+    }];
     [self setLoadTipInfo];
     [self.view addSubview:_currentView];
 
@@ -78,6 +83,10 @@
                 STRONG(weak_self)
                 [strong_weak_self loadNextArticle];
             }];
+            [_beforeView didClickImageCall:^(NSString *URLString) {
+                STRONG(weak_self)
+                [strong_weak_self showImageWithURLString:[URLString copy]];
+            }];
             [self.view addSubview:_beforeView];
         }
 
@@ -95,10 +104,15 @@
                 STRONG(weak_self)
                 [strong_weak_self loadNextArticle];
             }];
+            [_nextView didClickImageCall:^(NSString *URLString) {
+                STRONG(weak_self)
+                [strong_weak_self showImageWithURLString:[URLString copy]];
+            }];
             [self.view addSubview:_nextView];
         }
     }
     [self.view bringSubviewToFront:_currentView];
+    [self setViewUserInterfaceEnable];
 }
 
 - (void)setupToolBarView{
@@ -107,9 +121,7 @@
      UIBarButtonItem *flexibleitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:(UIBarButtonSystemItemFlexibleSpace) target:self action:nil];
 
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_back_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(backBeforeView)];
-
     UIBarButtonItem* nextItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_next_article_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(loadNextArticle)];
-
     UIBarButtonItem* beforeItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_scroll_top_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(loadBeforArticle)];
 
     [self setToolbarItems:@[backItem,flexibleitem,nextItem,flexibleitem,beforeItem] animated:YES];
@@ -142,6 +154,7 @@
             _nextView = _currentView;
             _currentView = _beforeView;
             _beforeView = temView;
+            [self setViewUserInterfaceEnable];
             AFNewsModel* beforeModel = [self.innerModels af_safeObject:self.currentIndex - 1];
             if (beforeModel) {
                 [_beforeView resetNewsID:beforeModel.newsID];
@@ -168,6 +181,7 @@
             _beforeView = _currentView;
             _currentView = _nextView;
             _nextView = temView;
+            [self setViewUserInterfaceEnable];
             AFNewsModel* beforeModel = [self.innerModels af_safeObject:self.currentIndex - 1];
             if (beforeModel) {
                 [_beforeView resetNewsID:beforeModel.newsID];
@@ -193,6 +207,15 @@
     [_currentView setLoadComponentInfoHeader:header footer:footer];
 }
 
+- (void)setViewUserInterfaceEnable{
+    _currentView.userInteractionEnabled = YES;
+    _nextView.userInteractionEnabled = NO;
+    _beforeView.userInteractionEnabled = NO;
+}
+
+- (void)showImageWithURLString:(NSString* )urlString{
+    [AFNewsImageView showWithImageURLString:urlString.af_toSafeString];
+}
 
 - (void)backBeforeView{
     [self.navigationController popViewControllerAnimated:YES];
