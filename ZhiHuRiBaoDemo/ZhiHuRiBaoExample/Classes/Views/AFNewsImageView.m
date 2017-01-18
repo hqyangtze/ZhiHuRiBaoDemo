@@ -7,10 +7,13 @@
 //
 
 #import "AFNewsImageView.h"
-
-@interface AFNewsImageView()<UIScrollViewDelegate>
+#import "BaseViewController.h"
+@interface AFNewsImageView()<UIScrollViewDelegate>{
+    BaseViewController*     _helperVC;
+}
 @property (weak, nonatomic)  AFWebImageView *imageView;
 @property (weak, nonatomic)  UIScrollView *baseScrollView;
+@property (weak, nonatomic)  UIButton *downloadBtn;
 @property (weak, nonatomic)  UITapGestureRecognizer *tapGesture;
 @property (weak, nonatomic)  UITapGestureRecognizer *tapSingleGesture;
 @property(nonatomic, copy) NSString* picturePath;
@@ -22,7 +25,7 @@
 + (void)showWithImageURLString:(NSString *)URLString{
     AFNewsImageView* view = [AFNewsImageView hq_frameWithX:0 Y:0 width:SCREEN_WIDTH height:SCREEN_HEIGHT];
     view.picturePath = URLString;
-    [view addSubView];
+    [view addSubViews];
     [view layoutIfNeed];
     view.alpha = 0.0;
     [[[UIApplication sharedApplication].windows lastObject] addSubview:view];
@@ -31,7 +34,7 @@
     }];
 }
 
-- (void)addSubView{
+- (void)addSubViews{
     UIScrollView* baseView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     baseView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     baseView.showsVerticalScrollIndicator = NO;
@@ -40,7 +43,7 @@
     baseView.delegate = self;
     baseView.backgroundColor = RGBA(0, 0, 0, 0.8);
     baseView.minimumZoomScale = 1.0;
-    baseView.maximumZoomScale = 3.0;
+    baseView.maximumZoomScale = 5.0;
     [self addSubview:baseView];
     self.baseScrollView = baseView;
 
@@ -53,11 +56,29 @@
     singleGesture.numberOfTapsRequired = 1;
     [self addGestureRecognizer:singleGesture];
     self.tapSingleGesture = singleGesture;
+    [self.tapSingleGesture requireGestureRecognizerToFail:self.tapGesture];
 
     AFWebImageView* imageView = [[AFWebImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH)];
     imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [baseView addSubview:imageView];
     self.imageView = imageView;
+
+    UIButton* dlBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [dlBtn setImage:[[UIImage imageNamed:k_zhifuribao_news_image_download_icon_image] af_scaleToSize:CGSizeMake(30, 30)] forState:UIControlStateNormal];
+    [dlBtn setHidden:YES];
+
+    [dlBtn addTarget:self action:@selector(saveImageToDisk) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:dlBtn];
+    self.downloadBtn = dlBtn;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+
+    [self.downloadBtn  mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.with.width.equalTo(40.0);
+        make.rightMargin.with.bottomMargin.equalTo(- 20.0);
+    }];
 }
 
 - (void)layoutIfNeed{
@@ -70,6 +91,7 @@
         }else{
             self.imageView.hq_y = (SCREEN_HEIGHT - self.imageView.hq_height) * 0.5;
         }
+        [self.downloadBtn setHidden:NO];
         [self setNeedsDisplay];
     };
 
@@ -91,7 +113,7 @@
 #pragma mark - doubleTapEvent
 - (void)doubleTapEvent:(UITapGestureRecognizer* )gesture{
     if (gesture == self.tapGesture) {
-        CGFloat scale = self.baseScrollView.zoomScale > 1.0 ? 1.0 : 2.0;
+        CGFloat scale = self.baseScrollView.zoomScale > 1.0 ? 1.0 : 3.0;
         [self.baseScrollView setZoomScale:scale animated:YES];
     }
 }
@@ -121,9 +143,26 @@
     return actualCenter;
 }
 
+- (void)saveImageToDisk{
+    UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+     _helperVC = [BaseViewController new];
+     if (error) {
+         [_helperVC showError:error];
+     }else{
+         [_helperVC showWithMessage:@"保存成功" animation:YES];
+     }
+}
+
 - (void)dealloc{
+    _helperVC = nil;
+    [self.downloadBtn removeTarget:self action:@selector(saveImageToDisk) forControlEvents:UIControlEventTouchUpInside];
     [self.tapGesture removeTarget:self action:@selector(doubleTapEvent:)];
+    [self.tapSingleGesture removeTarget:self action:@selector(dismiss:)];
     [self.baseScrollView removeGestureRecognizer:self.tapGesture];
+    [self removeGestureRecognizer:self.tapSingleGesture];
 }
 
 @end

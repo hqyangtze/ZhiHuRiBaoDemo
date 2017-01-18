@@ -41,6 +41,7 @@ static const CGFloat kFootViewHeight = 44.0f;
 
 @property (nonatomic, copy) void (^clickImage)(NSString *URLString);
 @property (nonatomic, copy) NSString* imageString;
+@property (nonatomic, assign) BOOL isClickImage;
 
 @end
 @implementation AFNewsDetailView
@@ -231,7 +232,9 @@ static const CGFloat kFootViewHeight = 44.0f;
             CGPoint touchPoint = [touch locationInView:self];
             NSString *imgURL = [NSString stringWithFormat:@"document.elementFromPoint(%f, %f).src", touchPoint.x, touchPoint.y];
             NSString *URLString = [_webView stringByEvaluatingJavaScriptFromString:imgURL];
+            self.isClickImage = NO;
             if (URLString.af_toSafeString.length > 0) {
+                self.isClickImage = YES;
                 self.imageString = URLString;
             }
         }
@@ -241,7 +244,7 @@ static const CGFloat kFootViewHeight = 44.0f;
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
     if (gestureRecognizer == _customGesture) {
-        if (self.imageString) {
+        if (self.imageString && self.isClickImage) {
             !self.clickImage ? : self.clickImage(self.imageString);
             self.imageString = nil;
         }

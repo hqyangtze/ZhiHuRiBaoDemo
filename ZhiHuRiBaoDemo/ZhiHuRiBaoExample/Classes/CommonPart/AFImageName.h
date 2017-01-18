@@ -40,6 +40,6 @@ FOUNDATION_EXTERN NSString* const k_zhifuribao_news_detail_scroll_top_image;
 
 
 /** ------------------------ ViewController_image -----------------------------------*/
-
+FOUNDATION_EXTERN NSString* const k_zhifuribao_news_image_download_icon_image;
 ///////////////////////////// segment_end /////////////////////////////////////////////
 

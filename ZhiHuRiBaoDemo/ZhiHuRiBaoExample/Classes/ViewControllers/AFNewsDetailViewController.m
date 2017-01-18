@@ -144,11 +144,11 @@
 - (void)loadBeforArticle{
     if (_currentIndex == 0) { /// 第一个model,没有上一篇
     }else{
+        _currentIndex--;
          UIViewAnimationOptions ani = UIViewAnimationOptionCurveEaseInOut |UIViewAnimationOptionTransitionCurlDown;
         [UIView transitionFromView:_currentView toView:_beforeView duration:0.5 options:ani completion:^(BOOL finished) {
 
             [self.view bringSubviewToFront:_beforeView];
-            _currentIndex--;
 
             AFNewsDetailView* temView = _nextView;
             _nextView = _currentView;
@@ -171,11 +171,11 @@
 - (void)loadNextArticle{
     if (_currentIndex == self.innerModels.count - 1) { /// 最后一个model,没有下一篇
     }else{
+        _currentIndex++;
         UIViewAnimationOptions ani = UIViewAnimationOptionCurveEaseInOut |UIViewAnimationOptionTransitionCurlUp;
         [UIView transitionFromView:_currentView toView:_nextView duration:0.5 options:ani completion:^(BOOL finished) {
 
             [self.view bringSubviewToFront:_nextView];
-            _currentIndex++;
 
             AFNewsDetailView* temView = _beforeView;
             _beforeView = _currentView;

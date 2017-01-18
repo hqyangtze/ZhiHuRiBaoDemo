@@ -31,5 +31,5 @@ NSString* const k_zhifuribao_news_detail_scroll_top_image = @"news_detail_scroll
 
 
 /** ------------------------ ViewController_image -----------------------------------*/
-
+NSString* const k_zhifuribao_news_image_download_icon_image = @"news_image_download_icon";
 ///////////////////////////// segment_end /////////////////////////////////////////////

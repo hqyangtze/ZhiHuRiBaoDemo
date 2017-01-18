@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05145D9B1E2F62610060D2E8 /* AFNewsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05145D9A1E2F62610060D2E8 /* AFNewsImageView.m */; };
+		05145D9F1E2F8A290060D2E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05145D9E1E2F8A290060D2E8 /* InfoPlist.strings */; };
+		05145DA11E2F8C370060D2E8 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05145DA01E2F8C370060D2E8 /* ExternalAccessory.framework */; };
 		053D50CE1E2A5EB400176475 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 053D50CD1E2A5EB400176475 /* AppDelegate.m */; };
 		05820CC91E2A6ADC00B4A0B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05820CC71E2A6ADC00B4A0B0 /* LaunchScreen.storyboard */; };
 		05820CCA1E2A6ADC00B4A0B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820CC81E2A6ADC00B4A0B0 /* main.m */; };
@@ -79,6 +81,9 @@
 		0513F7C01E2A66070000663F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05145D991E2F62610060D2E8 /* AFNewsImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNewsImageView.h; sourceTree = "<group>"; };
 		05145D9A1E2F62610060D2E8 /* AFNewsImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNewsImageView.m; sourceTree = "<group>"; };
+		05145D9E1E2F8A290060D2E8 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
+		05145DA01E2F8C370060D2E8 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		05145DA21E2F8C370060D2E8 /* ZhiHuRiBaoExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZhiHuRiBaoExample.entitlements; sourceTree = "<group>"; };
 		053D50C61E2A5EB400176475 /* ZhiHuRiBaoExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhiHuRiBaoExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053D50CC1E2A5EB400176475 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		053D50CD1E2A5EB400176475 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -213,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05145DA11E2F8C370060D2E8 /* ExternalAccessory.framework in Frameworks */,
 				05820D931E2A8F4E00B4A0B0 /* Social.framework in Frameworks */,
 				9693C8F9D1E1E5934A76143C /* libPods-ZhiHuRiBaoExample.a in Frameworks */,
 			);
@@ -242,12 +248,14 @@
 		053D50C81E2A5EB400176475 /* ZhiHuRiBaoExample */ = {
 			isa = PBXGroup;
 			children = (
+				05145DA21E2F8C370060D2E8 /* ZhiHuRiBaoExample.entitlements */,
 				05820CD01E2A6AEC00B4A0B0 /* Classes */,
 				05820CCB1E2A6AE600B4A0B0 /* Sources Files */,
 				05820CC51E2A6ADC00B4A0B0 /* Supporting Files */,
 				053D50CC1E2A5EB400176475 /* AppDelegate.h */,
 				053D50CD1E2A5EB400176475 /* AppDelegate.m */,
 				0513F7C01E2A66070000663F /* Info.plist */,
+				05145D9E1E2F8A290060D2E8 /* InfoPlist.strings */,
 			);
 			path = ZhiHuRiBaoExample;
 			sourceTree = "<group>";
@@ -518,6 +526,7 @@
 		8E7EE6EEE84388FC24494307 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				05145DA01E2F8C370060D2E8 /* ExternalAccessory.framework */,
 				05820D921E2A8F4E00B4A0B0 /* Social.framework */,
 				59599C4193E8391EC0490048 /* libPods-ZhiHuRiBaoExample.a */,
 			);
@@ -569,6 +578,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = QXGT47CNYA;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -602,6 +616,7 @@
 				05820CCE1E2A6AE600B4A0B0 /* Assets.xcassets in Resources */,
 				05820D811E2A6AEC00B4A0B0 /* AFShortNewsTableViewCell.xib in Resources */,
 				05820CC91E2A6ADC00B4A0B0 /* LaunchScreen.storyboard in Resources */,
+				05145D9F1E2F8A290060D2E8 /* InfoPlist.strings in Resources */,
 				05820D7C1E2A6AEC00B4A0B0 /* NavigationBarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -763,7 +778,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -804,7 +819,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -816,6 +831,7 @@
 			baseConfigurationReference = 7D1E43FCBAF335BAAF137754 /* Pods-ZhiHuRiBaoExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZhiHuRiBaoExample/ZhiHuRiBaoExample.entitlements;
 				DEVELOPMENT_TEAM = QXGT47CNYA;
 				GCC_PREFIX_HEADER = "ZhiHuRiBaoExample/Supporting Files/AppFrame_PrefixHeader.pch";
 				INFOPLIST_FILE = ZhiHuRiBaoExample/Info.plist;
@@ -831,6 +847,7 @@
 			baseConfigurationReference = 487F8335DB691D3B61ABFE4D /* Pods-ZhiHuRiBaoExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ZhiHuRiBaoExample/ZhiHuRiBaoExample.entitlements;
 				DEVELOPMENT_TEAM = QXGT47CNYA;
 				GCC_PREFIX_HEADER = "ZhiHuRiBaoExample/Supporting Files/AppFrame_PrefixHeader.pch";
 				INFOPLIST_FILE = ZhiHuRiBaoExample/Info.plist;
