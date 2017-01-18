@@ -43,6 +43,8 @@
 #define COMMON_BG_COLOR COLOR_RGB(0xf5f1f0)
 #define SEPARATOR_COLOR COLOR_RGB(0xf0ebea)
 #define WHITE_COLOR  RGB(255,255,255)
+/// 加上透明度的白色
+#define WHITE_COLOR_A(alpha) RGBA(255,255,255,alpha)
 #define CLEAR_COLOR  RGBA(255,255,255,0)
 /// 较深的背景灰色
 #define DARK_COMMON_BG_COLOR  RGB(150,150,150)

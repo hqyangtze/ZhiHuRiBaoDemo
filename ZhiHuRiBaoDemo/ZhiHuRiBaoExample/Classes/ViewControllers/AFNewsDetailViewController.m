@@ -102,15 +102,17 @@
 }
 
 - (void)setupToolBarView{
+    self.navigationController.view.backgroundColor = THEME_COLOR;
+
      UIBarButtonItem *flexibleitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:(UIBarButtonSystemItemFlexibleSpace) target:self action:nil];
 
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_back_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(backBeforeView)];
 
     UIBarButtonItem* nextItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_next_article_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(loadNextArticle)];
 
-    UIBarButtonItem* topItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_scroll_top_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(scrollToTopEvent)];
+    UIBarButtonItem* beforeItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_scroll_top_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(loadBeforArticle)];
 
-    [self setToolbarItems:@[backItem,flexibleitem,nextItem,flexibleitem,topItem] animated:YES];
+    [self setToolbarItems:@[backItem,flexibleitem,nextItem,flexibleitem,beforeItem] animated:YES];
 }
 
 
@@ -194,10 +196,6 @@
 
 - (void)backBeforeView{
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)scrollToTopEvent{
-    [_currentView autoScrollToTop];
 }
 
 @end

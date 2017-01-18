@@ -17,8 +17,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    
-    self.navigationBarHidden = NO;
+
     [self.navigationBar setTranslucent:NO];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:WHITE_COLOR}];
 
