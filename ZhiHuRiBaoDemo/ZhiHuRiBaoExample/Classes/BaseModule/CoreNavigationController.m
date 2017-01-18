@@ -20,19 +20,21 @@
     
     self.navigationBarHidden = NO;
     [self.navigationBar setTranslucent:NO];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:WHITE_COLOR}];
 
-    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20], NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    [[UINavigationBar appearance] setTintColor:WHITE_COLOR];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20], NSForegroundColorAttributeName : WHITE_COLOR}];
 
-    UIGraphicsBeginImageContextWithOptions(CGSizeMake(1, 1), NO, [UIScreen mainScreen].scale);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [THEME_COLOR set];
-    CGContextFillRect(context, CGRectMake(0, 0, 1, 1));
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    [[UINavigationBar appearance] setShadowImage:img];
-    [[UINavigationBar appearance] setBackgroundImage:img forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[UIImage af_imageWithColor:THEME_COLOR]];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage af_imageWithColor:THEME_COLOR] forBarMetrics:UIBarMetricsDefault];
+
+    self.toolbar.barStyle = UIBarStyleDefault;
+    [self.toolbar setBackgroundColor:WHITE_COLOR];
+    [[UIToolbar appearance] setTranslucent:NO];
+    [[UIToolbar appearance] setBarTintColor:WHITE_COLOR];
+    [[UIToolbar appearance] setTintColor:WHITE_COLOR];
+    [[UIToolbar appearance] setBackgroundImage:[UIImage af_imageWithColor:THEME_COLOR] forToolbarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [[UIToolbar appearance] setShadowImage:[UIImage af_imageWithColor:THEME_COLOR] forToolbarPosition:UIBarPositionAny];
 }
 
 -(id)initWithRootViewController:(UIViewController *)rootViewController{

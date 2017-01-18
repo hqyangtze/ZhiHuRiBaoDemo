@@ -27,8 +27,11 @@ FOUNDATION_EXTERN NSString* const k_navi_left_back_image;
 
 /// rightItems
 FOUNDATION_EXTERN NSString* const k_zhifuribao_share_icon_image;
-///////////////////////////// segment_end ////////////////////////////////////////////
 
+///////////////////////////// segment_end ////////////////////////////////////////////
+FOUNDATION_EXTERN NSString* const k_zhifuribao_news_detail_back_image;
+FOUNDATION_EXTERN NSString* const k_zhifuribao_news_detail_next_article_image;
+FOUNDATION_EXTERN NSString* const k_zhifuribao_news_detail_scroll_top_image;
 
 /** ------------------------ TabBar_image -----------------------------------*/
 

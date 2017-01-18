@@ -34,15 +34,17 @@
     [super viewDidLoad];
     _barStyle = UIStatusBarStyleLightContent;
     [self setUpViews];
+    [self setupToolBarView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setToolbarHidden:NO animated:NO];
 }
 
 - (void)setUpViews{
-    CGSize viewSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT);
+    CGSize viewSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT - TOOLBAR_HEIGHT);
     WEAK(self)
     _currentView = [AFNewsDetailView getViewWithSize:viewSize newsID:self.newsID needLoadInfo:NO updateStatusStyle:^(BOOL isLight) {
         STRONG(weak_self)
@@ -97,6 +99,18 @@
         }
     }
     [self.view bringSubviewToFront:_currentView];
+}
+
+- (void)setupToolBarView{
+     UIBarButtonItem *flexibleitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:(UIBarButtonSystemItemFlexibleSpace) target:self action:nil];
+
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_back_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(backBeforeView)];
+
+    UIBarButtonItem* nextItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_next_article_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(loadNextArticle)];
+
+    UIBarButtonItem* topItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:k_zhifuribao_news_detail_scroll_top_image] af_scaleToSize:CGSizeMake(30, 30)] style:UIBarButtonItemStylePlain target:self action:@selector(scrollToTopEvent)];
+
+    [self setToolbarItems:@[backItem,flexibleitem,nextItem,flexibleitem,topItem] animated:YES];
 }
 
 
@@ -177,5 +191,13 @@
     [_currentView setLoadComponentInfoHeader:header footer:footer];
 }
 
+
+- (void)backBeforeView{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)scrollToTopEvent{
+    [_currentView autoScrollToTop];
+}
 
 @end

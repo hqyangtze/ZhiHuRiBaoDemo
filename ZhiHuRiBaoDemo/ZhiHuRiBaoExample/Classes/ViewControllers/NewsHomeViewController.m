@@ -234,7 +234,7 @@ static NSString* const kCellIdentifier = @"kAFShortNewsTableViewCell";
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     NSInteger alpha = (NSInteger)(scrollView.contentOffset.y / HEADER_HEIGHT);
-    _naviBarView.backgroundColor = RGBA(61, 97, 172, alpha);
+    _naviBarView.backgroundColor = RGBA(63, 150, 240, alpha);
     [UIView animateWithDuration:0.1 animations:^{
         _snapView.hq_height = HEADER_HEIGHT;
     }];
@@ -256,7 +256,7 @@ static NSString* const kCellIdentifier = @"kAFShortNewsTableViewCell";
 }
 
 - (void)setStatusBarColorWithOffsetY:(CGFloat)y{
-    _naviBarView.backgroundColor = RGBA(61, 97, 172, y / HEADER_HEIGHT);
+    _naviBarView.backgroundColor = RGBA(63, 150, 240, y / HEADER_HEIGHT);
 }
 
 - (void)gotoNewsDetailViewWithNewsID:(NSString* )newsID{

@@ -181,6 +181,7 @@ static const CGFloat kFootViewHeight = 44.0f;
         NSString* js = [[model.js firstObject] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         jsString = js;
     }
+
     NSString* temString = [NSString stringWithFormat:@"<!DOCTYPE html>\n<html>\n<head>\n<title>%@</title>\n<link rel=\"stylesheet\" href=\"%@\" type=\"text/css\"/>\n</head>\n<body>\n%@\n<script type = \n\"text/javascript\"src = \"%@\"></script>\n</body>\n</html>",model.title,cssString,model.body,jsString];
     return temString;
 
@@ -210,6 +211,10 @@ static const CGFloat kFootViewHeight = 44.0f;
     [[_webView.scrollView af_loadBackFooter] setTitle:footer forState:MJRefreshStatePulling];
     [[_webView.scrollView af_loadBackFooter] setTitle:footer forState:MJRefreshStateRefreshing];
     [[_webView.scrollView af_loadBackFooter] setTitle:footer forState:MJRefreshStateWillRefresh];
+}
+
+- (void)autoScrollToTop{
+    [_webView.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 - (void)dealloc{

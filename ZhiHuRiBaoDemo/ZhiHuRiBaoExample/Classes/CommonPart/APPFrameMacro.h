@@ -23,6 +23,7 @@
 #define STATUSBAR_HEIGHT (20.0)
 #define NAVIGATION_HEIGHT (44.0)
 #define TABBAR_HEIGHT   (49.0)
+#define TOOLBAR_HEIGHT   (44.0)
 #define SEPARATOR_LINE_HEIGHT (0.25 * [UIScreen mainScreen].scale)
 
 #define IOS_VERSION ([[[UIDevice currentDevice] systemVersion] floatValue])
@@ -38,10 +39,11 @@
 #define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
 //主题蓝色
-#define THEME_COLOR COLOR_RGB(0x3d61ac)
+#define THEME_COLOR COLOR_RGB(0x3f96f0)  /// 63 150 240
 #define COMMON_BG_COLOR COLOR_RGB(0xf5f1f0)
 #define SEPARATOR_COLOR COLOR_RGB(0xf0ebea)
 #define WHITE_COLOR  RGB(255,255,255)
+#define CLEAR_COLOR  RGBA(255,255,255,0)
 /// 较深的背景灰色
 #define DARK_COMMON_BG_COLOR  RGB(150,150,150)
 #define DARK_TEXT_COLOR [UIColor darkTextColor]

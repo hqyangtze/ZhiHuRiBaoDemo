@@ -24,7 +24,9 @@ NSString* const k_zhifuribao_share_icon_image = @"zhifuribao_share_icon";
 
 
 /** ------------------------ TabBar_image -----------------------------------*/
-
+NSString* const k_zhifuribao_news_detail_back_image = @"news_detail_back";
+NSString* const k_zhifuribao_news_detail_next_article_image = @"news_detail_next_article";
+NSString* const k_zhifuribao_news_detail_scroll_top_image = @"news_detail_scroll_top";
 ///////////////////////////// segment_end /////////////////////////////////////
 
 
