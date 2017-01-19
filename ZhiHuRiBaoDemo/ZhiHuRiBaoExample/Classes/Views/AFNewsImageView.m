@@ -39,7 +39,8 @@
     baseView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     baseView.showsVerticalScrollIndicator = NO;
     baseView.showsHorizontalScrollIndicator = NO;
-    baseView.bounces = NO;
+    baseView.bounces = YES;
+    baseView.alwaysBounceVertical = YES;
     baseView.delegate = self;
     baseView.backgroundColor = RGBA(0, 0, 0, 0.8);
     baseView.minimumZoomScale = 1.0;

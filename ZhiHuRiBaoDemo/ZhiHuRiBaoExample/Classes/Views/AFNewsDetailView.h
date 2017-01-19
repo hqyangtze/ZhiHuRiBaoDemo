@@ -14,8 +14,7 @@ typedef void(^loadDataCall) (void);
 
 + (instancetype)getViewWithSize:(CGSize )size newsID:(NSString* )newsID needLoadInfo:(BOOL)need updateStatusStyle:(void(^)(BOOL isLight)) updateStatusCall;
 
-/// 点击图片回调
-- (void)didClickImageCall:(void(^)(NSString* URLString)) clickImage;
+@property (weak, nonatomic, readonly) UIWebView* webView;
 
 /// 加载新的数据，不会显示提示信息
 - (void)resetNewsID:(NSString* )newsID;

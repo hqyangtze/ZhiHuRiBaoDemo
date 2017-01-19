@@ -10,6 +10,7 @@
 		05145D9B1E2F62610060D2E8 /* AFNewsImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 05145D9A1E2F62610060D2E8 /* AFNewsImageView.m */; };
 		05145D9F1E2F8A290060D2E8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05145D9E1E2F8A290060D2E8 /* InfoPlist.strings */; };
 		05145DA11E2F8C370060D2E8 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05145DA01E2F8C370060D2E8 /* ExternalAccessory.framework */; };
+		05145DA51E3052E90060D2E8 /* UIWebView+AppFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 05145DA41E3052E90060D2E8 /* UIWebView+AppFrame.m */; };
 		053D50CE1E2A5EB400176475 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 053D50CD1E2A5EB400176475 /* AppDelegate.m */; };
 		05820CC91E2A6ADC00B4A0B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05820CC71E2A6ADC00B4A0B0 /* LaunchScreen.storyboard */; };
 		05820CCA1E2A6ADC00B4A0B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820CC81E2A6ADC00B4A0B0 /* main.m */; };
@@ -84,6 +85,8 @@
 		05145D9E1E2F8A290060D2E8 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		05145DA01E2F8C370060D2E8 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		05145DA21E2F8C370060D2E8 /* ZhiHuRiBaoExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZhiHuRiBaoExample.entitlements; sourceTree = "<group>"; };
+		05145DA31E3052E90060D2E8 /* UIWebView+AppFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AppFrame.h"; sourceTree = "<group>"; };
+		05145DA41E3052E90060D2E8 /* UIWebView+AppFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AppFrame.m"; sourceTree = "<group>"; };
 		053D50C61E2A5EB400176475 /* ZhiHuRiBaoExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZhiHuRiBaoExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		053D50CC1E2A5EB400176475 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		053D50CD1E2A5EB400176475 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -483,6 +486,8 @@
 				05820D351E2A6AEC00B4A0B0 /* UIView+HQExtend.m */,
 				05820D361E2A6AEC00B4A0B0 /* UIViewController+Extend.h */,
 				05820D371E2A6AEC00B4A0B0 /* UIViewController+Extend.m */,
+				05145DA31E3052E90060D2E8 /* UIWebView+AppFrame.h */,
+				05145DA41E3052E90060D2E8 /* UIWebView+AppFrame.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				05820D771E2A6AEC00B4A0B0 /* UIViewController+Extend.m in Sources */,
 				05820D701E2A6AEC00B4A0B0 /* AFNewsDetailViewController.m in Sources */,
 				05820D511E2A6AEC00B4A0B0 /* AFResponseModel.m in Sources */,
+				05145DA51E3052E90060D2E8 /* UIWebView+AppFrame.m in Sources */,
 				05820D5C1E2A6AEC00B4A0B0 /* UIImage+AppFrame.m in Sources */,
 				05820D7D1E2A6AEC00B4A0B0 /* AFDetailNewsHeaderView.m in Sources */,
 				05820D521E2A6AEC00B4A0B0 /* RootNavigationController.m in Sources */,

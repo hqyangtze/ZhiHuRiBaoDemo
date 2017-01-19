@@ -18,30 +18,23 @@
  height: 200px;
  } */
 #define HEADER_HEIGHT (200.0) /// 数据来源于知乎日报的接口
-static const CGFloat kFootViewHeight = 44.0f;
 
-@interface AFNewsDetailView ()<UIWebViewDelegate,UIGestureRecognizerDelegate>{
-    UIWebView* _webView;
+@interface AFNewsDetailView ()<UIWebViewDelegate>{
+    
     UIView*    _statusCoverView;
-    UIView*    _footView;
     /// 头部native视图
     AFDetailNewsHeaderView*     _headerView;
 
     /// 新闻model
     AFNewsDetailModel*      _detailModel;
-    UITapGestureRecognizer* _customGesture;
 }
-
+@property (weak, nonatomic) UIWebView* webView;
 @property (nonatomic, copy) NSString* newsID;
 @property (nonatomic, copy) void(^updateStatusCall)(BOOL isLight);
 @property (nonatomic, strong) BaseViewController* infoNeedVC;
 /// 加载数据回调
 @property (nonatomic, copy) loadDataCall newdataCall;
 @property (nonatomic, copy) loadDataCall moredataCall;
-
-@property (nonatomic, copy) void (^clickImage)(NSString *URLString);
-@property (nonatomic, copy) NSString* imageString;
-@property (nonatomic, assign) BOOL isClickImage;
 
 @end
 @implementation AFNewsDetailView
@@ -60,8 +53,8 @@ static const CGFloat kFootViewHeight = 44.0f;
 }
 
 - (void)setUpViews{
-    _webView = [[UIWebView alloc] initWithFrame:self.bounds];
-    //_webView.hq_height = _webView.hq_height - kFootViewHeight;
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:self.bounds];
+    _webView = webView;
     _webView.backgroundColor = COMMON_BG_COLOR;
     _webView.allowsInlineMediaPlayback = YES;
     [self addSubview:_webView];
@@ -105,14 +98,6 @@ static const CGFloat kFootViewHeight = 44.0f;
     _statusCoverView.backgroundColor = WHITE_COLOR;
     _statusCoverView.hidden = YES;
     [self addSubview:_statusCoverView];
-
-    _footView = [UIView hq_frameWithX:0 Y:SCREEN_HEIGHT - kFootViewHeight width:SCREEN_WIDTH height:kFootViewHeight];
-    _footView.backgroundColor = WHITE_COLOR;
-    UITapGestureRecognizer* gesture = [[UITapGestureRecognizer alloc] initWithTarget:nil action:nil];
-    [self addGestureRecognizer:gesture];
-
-    gesture.delegate = self;
-    _customGesture = gesture;
 }
 
 - (void)loadNewDataFromNetwork:(loadDataCall)newdataCall{
@@ -222,37 +207,8 @@ static const CGFloat kFootViewHeight = 44.0f;
     [[_webView.scrollView af_loadBackFooter] setTitle:footer forState:MJRefreshStateWillRefresh];
 }
 
-- (void)didClickImageCall:(void (^)(NSString *))clickImage{
-    self.clickImage = clickImage;
-}
-
--(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
-    if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
-        if (gestureRecognizer == _customGesture) {
-            CGPoint touchPoint = [touch locationInView:self];
-            NSString *imgURL = [NSString stringWithFormat:@"document.elementFromPoint(%f, %f).src", touchPoint.x, touchPoint.y];
-            NSString *URLString = [_webView stringByEvaluatingJavaScriptFromString:imgURL];
-            self.isClickImage = NO;
-            if (URLString.af_toSafeString.length > 0) {
-                self.isClickImage = YES;
-                self.imageString = URLString;
-            }
-        }
-    }
-    return YES;
-}
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    if (gestureRecognizer == _customGesture) {
-        if (self.imageString && self.isClickImage) {
-            !self.clickImage ? : self.clickImage(self.imageString);
-            self.imageString = nil;
-        }
-    }
-    return NO;
-}
-
 - (void)dealloc{
+    self.infoNeedVC = nil;
     [_webView.scrollView af_removeObserverBlocksForKeyPath:@"contentOffset"];
 }
 

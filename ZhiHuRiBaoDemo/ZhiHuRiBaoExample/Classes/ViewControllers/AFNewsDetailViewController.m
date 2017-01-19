@@ -60,7 +60,7 @@
         STRONG(weak_self)
         [strong_weak_self loadNextArticle];
     }];
-    [_currentView didClickImageCall:^(NSString *URLString) {
+    [_currentView.webView af_didClickImageCall:^(NSString *URLString) {
         STRONG(weak_self)
         [strong_weak_self showImageWithURLString:[URLString copy]];
     }];
@@ -83,7 +83,7 @@
                 STRONG(weak_self)
                 [strong_weak_self loadNextArticle];
             }];
-            [_beforeView didClickImageCall:^(NSString *URLString) {
+            [_beforeView.webView af_didClickImageCall:^(NSString *URLString) {
                 STRONG(weak_self)
                 [strong_weak_self showImageWithURLString:[URLString copy]];
             }];
@@ -104,7 +104,7 @@
                 STRONG(weak_self)
                 [strong_weak_self loadNextArticle];
             }];
-            [_nextView didClickImageCall:^(NSString *URLString) {
+            [_nextView.webView af_didClickImageCall:^(NSString *URLString) {
                 STRONG(weak_self)
                 [strong_weak_self showImageWithURLString:[URLString copy]];
             }];

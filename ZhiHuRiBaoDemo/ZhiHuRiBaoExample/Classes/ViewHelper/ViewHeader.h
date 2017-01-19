@@ -14,4 +14,5 @@
 #import "UIView+HQExtend.h"
 #import "UIViewController+Extend.h"
 #import "UIScrollView+Refresh.h"
+#import "UIWebView+AppFrame.h"
 #endif /* ViewHeader_h */
