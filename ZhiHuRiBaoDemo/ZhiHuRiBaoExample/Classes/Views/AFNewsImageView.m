@@ -8,6 +8,9 @@
 
 #import "AFNewsImageView.h"
 #import "BaseViewController.h"
+
+static const CGFloat kBGAlpha = 0.9;
+
 @interface AFNewsImageView()<UIScrollViewDelegate>{
     BaseViewController*     _helperVC;
 }
@@ -42,7 +45,7 @@
     baseView.bounces = YES;
     baseView.alwaysBounceVertical = YES;
     baseView.delegate = self;
-    baseView.backgroundColor = RGBA(0, 0, 0, 0.8);
+    baseView.backgroundColor = RGBA(0, 0, 0, kBGAlpha);
     baseView.minimumZoomScale = 1.0;
     baseView.maximumZoomScale = 5.0;
     [self addSubview:baseView];
@@ -86,7 +89,8 @@
     void (^layoutViewByScaleImage)(UIImage* image) = ^(UIImage* image){
         CGSize imgSize = [image size];
         self.imageView.hq_height = SCREEN_WIDTH / imgSize.width * imgSize.height;
-        self.baseScrollView.contentSize = CGSizeMake(SCREEN_WIDTH, self.imageView.hq_height);
+        CGFloat contentSizeHeight = SCREEN_HEIGHT > self.imageView.hq_height ? SCREEN_HEIGHT : self.imageView.hq_height;
+        self.baseScrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentSizeHeight);
         if (self.imageView.hq_height > SCREEN_HEIGHT) {
             self.imageView.hq_y = 0.0f;
         }else{
@@ -132,6 +136,27 @@
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView{
     self.imageView.center = [self centerOfScrollViewContent:scrollView];
+}
+
+/// 实现 仿滑动消失
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+
+    CGFloat offsetY = scrollView.contentOffset.y;
+    CGFloat alpha = kBGAlpha - (ABS(offsetY) / SCREEN_HEIGHT) * 2.6;
+
+    self.baseScrollView.backgroundColor = RGBA(0, 0, 0, alpha);
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+
+    if (ABS(velocity.y) > 2.05f) {
+        [self removeFromSuperview];
+        return;
+    }
+
+    if (targetContentOffset->y < 0  || (targetContentOffset->y > self.imageView.hq_height)) {
+        [self removeFromSuperview];
+    }
 }
 
 - (CGPoint)centerOfScrollViewContent:(UIScrollView *)scrollView{
