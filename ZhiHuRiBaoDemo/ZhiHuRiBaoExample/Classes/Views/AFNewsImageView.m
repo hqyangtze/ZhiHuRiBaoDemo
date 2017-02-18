@@ -9,6 +9,8 @@
 #import "AFNewsImageView.h"
 #import "BaseViewController.h"
 
+#define IMAGE_HEIGHT (self.imageView.hq_height)
+
 static const CGFloat kBGAlpha = 0.9;
 
 @interface AFNewsImageView()<UIScrollViewDelegate>{
@@ -70,9 +72,9 @@ static const CGFloat kBGAlpha = 0.9;
     UIButton* dlBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [dlBtn setImage:[[UIImage imageNamed:k_zhifuribao_news_image_download_icon_image] af_scaleToSize:CGSizeMake(30, 30)] forState:UIControlStateNormal];
     [dlBtn setHidden:YES];
-
     [dlBtn addTarget:self action:@selector(saveImageToDisk) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:dlBtn];
+    
     self.downloadBtn = dlBtn;
 }
 
@@ -88,13 +90,13 @@ static const CGFloat kBGAlpha = 0.9;
 - (void)layoutIfNeed{
     void (^layoutViewByScaleImage)(UIImage* image) = ^(UIImage* image){
         CGSize imgSize = [image size];
-        self.imageView.hq_height = SCREEN_WIDTH / imgSize.width * imgSize.height;
-        CGFloat contentSizeHeight = SCREEN_HEIGHT > self.imageView.hq_height ? SCREEN_HEIGHT : self.imageView.hq_height;
+        IMAGE_HEIGHT = SCREEN_WIDTH / imgSize.width * imgSize.height;
+        CGFloat contentSizeHeight = SCREEN_HEIGHT > IMAGE_HEIGHT ? SCREEN_HEIGHT : IMAGE_HEIGHT;
         self.baseScrollView.contentSize = CGSizeMake(SCREEN_WIDTH, contentSizeHeight);
-        if (self.imageView.hq_height > SCREEN_HEIGHT) {
+        if (IMAGE_HEIGHT > SCREEN_HEIGHT) {
             self.imageView.hq_y = 0.0f;
         }else{
-            self.imageView.hq_y = (SCREEN_HEIGHT - self.imageView.hq_height) * 0.5;
+            self.imageView.hq_y = (SCREEN_HEIGHT - IMAGE_HEIGHT) * 0.5;
         }
         [self.downloadBtn setHidden:NO];
         [self setNeedsDisplay];
@@ -142,30 +144,38 @@ static const CGFloat kBGAlpha = 0.9;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
 
     CGFloat offsetY = scrollView.contentOffset.y;
-    CGFloat alpha = kBGAlpha - (ABS(offsetY) / SCREEN_HEIGHT) * 2.6;
 
-    self.baseScrollView.backgroundColor = RGBA(0, 0, 0, alpha);
+    if (ABS(offsetY) > IMAGE_HEIGHT * 0.25 ) {
+
+        CGFloat alpha = kBGAlpha - ((ABS(offsetY) - IMAGE_HEIGHT * 0.25) / SCREEN_HEIGHT) * 2.6;
+
+        self.baseScrollView.backgroundColor = RGBA(0, 0, 0, alpha);
+    }
 }
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
 
-    if (ABS(velocity.y) > 2.05f) {
+    if (ABS(velocity.y) > 2.00f) {
         [self removeFromSuperview];
         return;
     }
 
-    if (targetContentOffset->y < 0  || (targetContentOffset->y > self.imageView.hq_height)) {
+    if (targetContentOffset->y < 0  || (targetContentOffset->y > IMAGE_HEIGHT)) {
         [self removeFromSuperview];
     }
 }
 
 - (CGPoint)centerOfScrollViewContent:(UIScrollView *)scrollView{
-    CGFloat offsetX = (scrollView.bounds.size.width > scrollView.contentSize.width)?
-    (scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5 : 0.0;
-    CGFloat offsetY = (scrollView.bounds.size.height > scrollView.contentSize.height)?
-    (scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5 : 0.0;
-    CGPoint actualCenter = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX,
-                                       scrollView.contentSize.height * 0.5 + offsetY);
+
+    CGFloat boundsW = scrollView.bounds.size.width;
+    CGFloat boundsH = scrollView.bounds.size.height;
+    CGFloat contentSizeW = scrollView.contentSize.width;
+    CGFloat contentSizeH = scrollView.contentSize.height;
+
+    CGFloat offsetX = (boundsW > contentSizeW) ? (boundsW - contentSizeW) * 0.5 : 0.0;
+    CGFloat offsetY = (boundsH > contentSizeH) ? (boundsH - contentSizeH) * 0.5 : 0.0;
+    CGPoint actualCenter = CGPointMake(contentSizeW * 0.5 + offsetX,contentSizeH * 0.5 + offsetY);
+
     return actualCenter;
 }
 

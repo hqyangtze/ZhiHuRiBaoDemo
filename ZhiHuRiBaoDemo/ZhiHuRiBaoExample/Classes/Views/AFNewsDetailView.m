@@ -171,7 +171,7 @@
         cssString = css;
     }
     NSString* jsString = nil;
-    if (model.css.count) {
+    if (model.js.count) {
         NSString* js = [[model.js firstObject] stringByReplacingOccurrencesOfString:@"\"" withString:@""];
         jsString = js;
     }

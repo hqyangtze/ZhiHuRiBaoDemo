@@ -46,7 +46,7 @@ static AFNetworkConfigObject* __instance;
         _apiDict = @{
                      kAFLastNewsApi: @"/api/4/news/latest",
                      kAFBeforeNewsApi: @"/api/4/news/before",
-                     kAFNewsDetailApi:  @"/api/4/news",
+                     kAFNewsDetailApi: @"/api/4/news",
                      kAFStartImageApi: @"api/4/start-image",
                      };
 

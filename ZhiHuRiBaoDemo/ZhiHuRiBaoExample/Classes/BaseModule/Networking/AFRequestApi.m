@@ -32,7 +32,7 @@
 
 
 - (NSString *)requestUrl{
-    return [[AFNetworkConfigObject shareConfig] apiForClass:[self class]];;
+    return [[AFNetworkConfigObject shareConfig] apiForClass:[self class]];
 }
 
 - (NSString *)cdnUrl{

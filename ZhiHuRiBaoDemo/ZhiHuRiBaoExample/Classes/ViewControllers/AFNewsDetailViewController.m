@@ -13,11 +13,10 @@
 
 @interface AFNewsDetailViewController (){
 
-    AFNewsDetailView*   _currentView;
-
-    AFNewsDetailView*   _nextView;
     AFNewsDetailView*   _beforeView;
-    UIStatusBarStyle        _barStyle;
+    AFNewsDetailView*   _nextView;
+    UIStatusBarStyle    _barStyle;
+    AFNewsDetailView*   _currentView;
 }
 @property (nonatomic, strong) NSArray* innerModels;
 @property (nonatomic, assign) NSInteger currentIndex;

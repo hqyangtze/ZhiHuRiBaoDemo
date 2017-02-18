@@ -25,8 +25,10 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
     _webView.hq_height = SCREEN_HEIGHT - NAVIGATION_HEIGHT - STATUSBAR_HEIGHT;
+
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 - (void)setUpWebView{
@@ -86,9 +88,7 @@
     UIBarButtonItem* leftBar = [[UIBarButtonItem alloc]initWithCustomView:leftTopBtn];
     [leftTopBtn addTarget:self action:@selector(af_leftTopAction) forControlEvents:UIControlEventTouchUpInside];
 
-    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil action:nil];
+    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spaceItem.width = -5;
 
     UIBarButtonItem * closeItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeThisView)];

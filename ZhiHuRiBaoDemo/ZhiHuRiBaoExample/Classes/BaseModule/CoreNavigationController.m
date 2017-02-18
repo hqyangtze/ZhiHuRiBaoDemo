@@ -57,7 +57,7 @@
 
 #pragma mark - UIGestureRecognizerDelegate
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
-    NSLog(@"ges:%@",gestureRecognizer);
+    LOG(@"ges:%@",gestureRecognizer);
     if (gestureRecognizer == self.interactivePopGestureRecognizer) {
         return (self.currentShowVC == self.topViewController);
     }
@@ -66,11 +66,11 @@
 
 #pragma mark - UINavigationControllerDelegate
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    NSLog(@"nvShow:%@", viewController);
+    LOG(@"nvShow:%@", viewController);
 }
 
 -(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    NSLog(@"nvDidShow:%@", viewController);
+    LOG(@"nvDidShow:%@", viewController);
     if (navigationController.viewControllers.count == 1)
         self.currentShowVC = Nil;
     else
