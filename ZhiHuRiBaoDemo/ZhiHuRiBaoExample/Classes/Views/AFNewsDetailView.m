@@ -143,7 +143,7 @@
 
 ///  私有方法
 - (void)loadNewsDetailData{
-    AFNewsDetailApi* api = [AFNewsDetailApi getModelWithNewsID:self.newsID.af_toSafeString];
+    AFNewsDetailApi* api = [AFNewsDetailApi getModelWithNewsID:self.newsID.af_string];
     [api startSuccessCall:^(id  _Nonnull responseJOSN, id  _Nonnull responseModel) {
 
         _detailModel = responseModel;
@@ -157,7 +157,7 @@
         AFDetailNewsHeaderViewModel* headerModel = [AFDetailNewsHeaderViewModel new];
         headerModel.title = _detailModel.title;
         headerModel.imageSource = _detailModel.image_source;
-        headerModel.imgURLString = _detailModel.image.af_toSafeString;
+        headerModel.imgURLString = _detailModel.image.af_string;
         [_headerView updateViewWithModel:headerModel];
     } failureCall:^(NSError * _Nonnull error, NSDictionary * _Nonnull userInfo) {
         [self.infoNeedVC showError:error];

@@ -32,6 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     _barStyle = UIStatusBarStyleLightContent;
     [self setUpViews];
     [self setupToolBarView];
@@ -39,6 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     [self.navigationController setToolbarHidden:NO animated:NO];
 }
@@ -142,6 +144,7 @@
 
 - (void)loadBeforArticle{
     if (_currentIndex == 0) { /// 第一个model,没有上一篇
+        [self showWithMessage:@"这是第一篇！"];
     }else{
         _currentIndex--;
          UIViewAnimationOptions ani = UIViewAnimationOptionCurveEaseInOut |UIViewAnimationOptionTransitionCurlDown;
@@ -169,6 +172,7 @@
 
 - (void)loadNextArticle{
     if (_currentIndex == self.innerModels.count - 1) { /// 最后一个model,没有下一篇
+        [self showWithMessage:@"这是最后一篇！"];
     }else{
         _currentIndex++;
         UIViewAnimationOptions ani = UIViewAnimationOptionCurveEaseInOut |UIViewAnimationOptionTransitionCurlUp;
@@ -213,7 +217,7 @@
 }
 
 - (void)showImageWithURLString:(NSString* )urlString{
-    [AFNewsImageView showWithImageURLString:urlString.af_toSafeString];
+    [AFNewsImageView showWithImageURLString:urlString.af_string];
 }
 
 - (void)backBeforeView{

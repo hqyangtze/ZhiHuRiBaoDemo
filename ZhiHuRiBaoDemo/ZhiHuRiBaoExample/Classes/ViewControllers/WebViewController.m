@@ -8,7 +8,7 @@
 
 #import "WebViewController.h"
 #import <Social/Social.h>
-
+#import "AFNewsImageView.h"
 @interface WebViewController ()<UIWebViewDelegate>{
     UIWebView* _webView;
 }
@@ -41,6 +41,10 @@
         [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.URLString]]];
     }
     _webView.delegate = self;
+
+    [_webView af_didClickImageCall:^(NSString *URLString) {
+        [AFNewsImageView showWithImageURLString:URLString];
+    }];
 }
 
 #pragma mark - UIWebViewDelegate

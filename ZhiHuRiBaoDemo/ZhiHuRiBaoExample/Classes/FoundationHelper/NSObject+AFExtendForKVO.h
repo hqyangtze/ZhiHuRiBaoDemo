@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 /// 获取字符串
-@property (copy, nonatomic, readonly) NSString* af_toSafeString;
+@property (copy, nonatomic, readonly) NSString* af_string;
 
 @end
 

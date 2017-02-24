@@ -22,7 +22,7 @@
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:WHITE_COLOR}];
 
     [[UINavigationBar appearance] setTintColor:WHITE_COLOR];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont systemFontOfSize:20], NSForegroundColorAttributeName : WHITE_COLOR}];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : UIFontMake(20), NSForegroundColorAttributeName : WHITE_COLOR}];
 
     [[UINavigationBar appearance] setShadowImage:[UIImage af_imageWithColor:THEME_COLOR]];
     [[UINavigationBar appearance] setBackgroundImage:[UIImage af_imageWithColor:THEME_COLOR] forBarMetrics:UIBarMetricsDefault];

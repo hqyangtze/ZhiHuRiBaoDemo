@@ -21,7 +21,7 @@ static const CGFloat kBGAlpha = 0.9;
 @property (weak, nonatomic)  UIButton *downloadBtn;
 @property (weak, nonatomic)  UITapGestureRecognizer *tapGesture;
 @property (weak, nonatomic)  UITapGestureRecognizer *tapSingleGesture;
-@property(nonatomic, copy) NSString* picturePath;
+@property (nonatomic, copy)  NSString* picturePath;
 @end
 
 @implementation AFNewsImageView
@@ -109,7 +109,7 @@ static const CGFloat kBGAlpha = 0.9;
             }
         }];
     }else{
-        UIImage* image = [UIImage imageWithContentsOfFile:self.picturePath.af_toSafeString];
+        UIImage* image = [UIImage imageWithContentsOfFile:self.picturePath.af_string];
         [self.imageView setImage:image];
         if (image) {
             layoutViewByScaleImage(image);
@@ -174,9 +174,9 @@ static const CGFloat kBGAlpha = 0.9;
 
     CGFloat offsetX = (boundsW > contentSizeW) ? (boundsW - contentSizeW) * 0.5 : 0.0;
     CGFloat offsetY = (boundsH > contentSizeH) ? (boundsH - contentSizeH) * 0.5 : 0.0;
-    CGPoint actualCenter = CGPointMake(contentSizeW * 0.5 + offsetX,contentSizeH * 0.5 + offsetY);
+    CGPoint center = CGPointMake(contentSizeW * 0.5 + offsetX,contentSizeH * 0.5 + offsetY);
 
-    return actualCenter;
+    return center;
 }
 
 - (void)saveImageToDisk{

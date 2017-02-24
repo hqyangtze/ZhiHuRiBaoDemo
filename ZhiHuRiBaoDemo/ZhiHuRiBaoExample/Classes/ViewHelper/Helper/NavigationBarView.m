@@ -35,6 +35,8 @@
     self.centerTitleLab.hidden = YES;
     self.centerImgView.hidden = YES;
     self.backgroundColor = THEME_COLOR;
+    self.centerTitleLab.font = UIFontBoldMake(20);
+    self.centerTitleLab.textColor = WHITE_COLOR;
 }
 
 + (instancetype)getView{

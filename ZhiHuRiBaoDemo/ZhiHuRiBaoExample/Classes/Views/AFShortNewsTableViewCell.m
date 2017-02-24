@@ -21,7 +21,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+
     self.separatorLineHeight.constant = SEPARATOR_LINE_HEIGHT;
+    self.newsTitleLab.font = UIFontBoldMake(16);
+    self.newsTitleLab.textColor = DARK_TEXT_COLOR;
 }
 
 - (void)updateCellWithModel:(AFNewsModel*) model{

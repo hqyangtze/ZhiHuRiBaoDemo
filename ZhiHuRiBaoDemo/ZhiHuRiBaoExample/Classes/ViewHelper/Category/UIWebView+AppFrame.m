@@ -68,7 +68,7 @@ typedef void (^AFClickImageBlock)(NSString *URLString);
             NSString *imgURL = [NSString stringWithFormat:@"document.elementFromPoint(%f, %f).src", touchPoint.x, touchPoint.y];
             NSString *URLString = [self stringByEvaluatingJavaScriptFromString:imgURL];
             self.af_isClickImage = @(NO);
-            if (URLString.af_toSafeString.length > 0) {
+            if (URLString.af_string.length > 0) {
                 self.af_isClickImage = @(YES);
                 self.af_imageString = URLString;
             }

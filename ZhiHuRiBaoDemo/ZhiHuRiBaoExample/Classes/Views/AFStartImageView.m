@@ -37,7 +37,7 @@
     AFStartImageApi* startImageApi = [AFStartImageApi getModelWithImgScale:imageScale];
     [startImageApi startSuccessCall:^(id  _Nonnull responseJOSN, id  _Nonnull responseModel) {
         AFStartImageModel* model = responseModel;
-        [self.bgImageView setImageWithURLString:model.img.af_toSafeString placeholderImage:placeHolderImage];
+        [self.bgImageView setImageWithURLString:model.img.af_string placeholderImage:placeHolderImage];
         [self.textLab setText:model.text];
         [self amimationAndDisappear];
     } failureCall:^(NSError * _Nonnull error, NSDictionary * _Nonnull userInfo) {

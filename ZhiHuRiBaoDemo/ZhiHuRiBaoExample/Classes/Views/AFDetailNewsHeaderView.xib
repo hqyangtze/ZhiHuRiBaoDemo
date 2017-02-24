@@ -62,7 +62,7 @@
                 <outlet property="textView" destination="dDo-hR-U27" id="3V2-op-6sT"/>
                 <outlet property="titleLab" destination="ZCC-Cc-UTg" id="ahO-6X-CRQ"/>
             </connections>
-            <point key="canvasLocation" x="-63.5" y="-119.5"/>
+            <point key="canvasLocation" x="-198" y="-155"/>
         </view>
     </objects>
 </document>

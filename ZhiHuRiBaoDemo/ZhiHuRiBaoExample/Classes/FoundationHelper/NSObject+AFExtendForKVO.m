@@ -98,7 +98,7 @@ static const int block_key;
 
 
 /// 获取字符串
-- (NSString *)af_toSafeString{
+- (NSString *)af_string{
     if (self == nil) {
         return @"";
     }

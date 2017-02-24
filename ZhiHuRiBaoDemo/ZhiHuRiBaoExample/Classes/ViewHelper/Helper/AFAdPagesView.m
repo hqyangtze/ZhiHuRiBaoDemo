@@ -35,8 +35,8 @@
 
         _textLab = [UILabel new];
         _textLab.numberOfLines = 3;
-        [_textLab setTextColor:[UIColor whiteColor]];
-        _textLab.font = [UIFont systemFontOfSize:18];
+        [_textLab setTextColor:WHITE_COLOR];
+        _textLab.font = UIFontBoldMake(18);
         [self addSubview:_textLab];
     }
     return self;
@@ -204,7 +204,6 @@
     self.currentIV.center = CGPointMake(self.currentView.hq_width * 0.5, self.currentView.hq_height * 0.5);
     [self.currentView addSubview:self.currentIV];
 
-    //CGSize itemSize = CGSizeMake(SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT);
     self.awardIV = temView;
     if (self.modelArray) {
         if (self.currentIndex == 0) {
@@ -233,7 +232,6 @@
     self.currentIV = self.nextIV;
     self.currentIV.center = CGPointMake(self.currentView.hq_width * 0.5, self.currentView.hq_height * 0.5);
     [self.currentView addSubview:self.currentIV];
-    //CGSize itemSize = CGSizeMake(SELF_VIEW_WIDTH, SELF_VIEW_HEIGHT);
     self.nextIV = temView;
     if (self.modelArray) {
         if (self.currentIndex == self.modelArray.count-1) {

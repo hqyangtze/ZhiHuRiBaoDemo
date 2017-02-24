@@ -26,7 +26,9 @@
 
 - (void)awakeFromNib{
     [super awakeFromNib];
-    
+
+    self.titleLab.font = UIFontBoldMake(18);
+    self.titleLab.textColor = WHITE_COLOR;
     [self addCAGradientLayer];
 }
 
@@ -34,13 +36,21 @@
     AFDetailNewsHeaderView* view = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] lastObject];
     view.hq_size = size;
     view.viewSize = size;
+    [view setNeedsLayout];
+
     return view;
 }
 
 - (void)updateViewWithModel:(AFDetailNewsHeaderViewModel *)model{
-    [self.bgImgView setImageWithURLString:model.imgURLString.af_toSafeString  placeholderImage:[UIImage af_placeholderImage]];
-    self.titleLab.text = model.title.af_toSafeString;
-    self.imgCopyLab.text = model.imageSource.af_toSafeString;
+    [self.bgImgView setImageWithURLString:model.imgURLString.af_string  placeholderImage:[UIImage af_placeholderImage]];
+    self.titleLab.text = model.title.af_string;
+    self.imgCopyLab.text = model.imageSource.af_string;
+
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    _bgCoverLayer.frame = self.bgImgView.bounds;
+    [self.bgImgView.layer setNeedsLayout];
+    [CATransaction commit];
 }
 
 - (void)addCAGradientLayer{
