@@ -27,7 +27,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:UIFontMake(20), NSFontAttributeName, [UIColor whiteColor], NSForegroundColorAttributeName, nil];
 
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+    if (IOS_VERSION >= 7.0) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.extendedLayoutIncludesOpaqueBars = NO;
         self.modalPresentationCapturesStatusBarAppearance = NO;

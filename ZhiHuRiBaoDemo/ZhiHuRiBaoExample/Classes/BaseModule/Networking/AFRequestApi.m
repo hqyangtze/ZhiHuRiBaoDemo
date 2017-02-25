@@ -40,7 +40,7 @@
 }
 
 - (NSTimeInterval)requestTimeoutInterval{
-    return 10;
+    return 30;
 }
 
 
