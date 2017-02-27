@@ -393,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				05820D0B1E2A6AEC00B4A0B0 /* MBProgressHUD_HQExtend */,
-				05820D0F1E2A6AEC00B4A0B0 /* Navigator */,
 				05820D111E2A6AEC00B4A0B0 /* YTKNetwork */,
 			);
 			path = Three_Part_Libs;
@@ -407,21 +406,6 @@
 				05820D0E1E2A6AEC00B4A0B0 /* MBProgressHUD.bundle */,
 			);
 			path = MBProgressHUD_HQExtend;
-			sourceTree = "<group>";
-		};
-		05820D0F1E2A6AEC00B4A0B0 /* Navigator */ = {
-			isa = PBXGroup;
-			children = (
-				05820D101E2A6AEC00B4A0B0 /* Helper */,
-			);
-			path = Navigator;
-			sourceTree = "<group>";
-		};
-		05820D101E2A6AEC00B4A0B0 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		05820D111E2A6AEC00B4A0B0 /* YTKNetwork */ = {
