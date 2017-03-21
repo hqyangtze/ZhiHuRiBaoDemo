@@ -1,6 +1,8 @@
 # ZhiHuRiBaoDemo
 借助网上公开的知乎日报API,自己模仿知乎日报APP写了首页和详情页，还待完善...
 
+ - [UIWebView,点击图片，获取被点击图片的地址](https://github.com/hqyangtze/water/blob/master/%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/UIWebView%E8%8E%B7%E5%8F%96%E8%A2%AB%E7%82%B9%E5%87%BB%E5%9B%BE%E7%89%87%E7%9A%84%E5%9C%B0%E5%9D%80.md)
+
 <div>
 项目使用到的第三方库目前有：
 <div>
