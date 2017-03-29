@@ -80,9 +80,9 @@
 
 - (void)setNavigationLeftItems{
     UIImage* image = [UIImage imageNamed:k_navi_left_back_image];
-    UIFont* font = [UIFont getFontWithFontName:nil displayStr:@"返回" fontSize:17.0f];
+    UIFont* font = UIFontMake(17);
 
-    UIButton* leftTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, font.fontSize.width+image.size.width+5, font.fontSize.height)];
+    UIButton* leftTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 36+image.size.width+5, 30)];
     leftTopBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     leftTopBtn.titleLabel.font = font;
     [leftTopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];

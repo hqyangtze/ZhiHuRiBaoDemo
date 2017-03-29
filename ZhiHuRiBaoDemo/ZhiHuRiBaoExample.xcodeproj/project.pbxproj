@@ -55,7 +55,6 @@
 		05820D701E2A6AEC00B4A0B0 /* AFNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D271E2A6AEC00B4A0B0 /* AFNewsDetailViewController.m */; };
 		05820D711E2A6AEC00B4A0B0 /* NewsHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D291E2A6AEC00B4A0B0 /* NewsHomeViewController.m */; };
 		05820D721E2A6AEC00B4A0B0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D2B1E2A6AEC00B4A0B0 /* WebViewController.m */; };
-		05820D731E2A6AEC00B4A0B0 /* UIFont+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D2F1E2A6AEC00B4A0B0 /* UIFont+Extend.m */; };
 		05820D741E2A6AEC00B4A0B0 /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D311E2A6AEC00B4A0B0 /* UIImage+Extend.m */; };
 		05820D751E2A6AEC00B4A0B0 /* UIScrollView+Refresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D331E2A6AEC00B4A0B0 /* UIScrollView+Refresh.m */; };
 		05820D761E2A6AEC00B4A0B0 /* UIView+HQExtend.m in Sources */ = {isa = PBXBuildFile; fileRef = 05820D351E2A6AEC00B4A0B0 /* UIView+HQExtend.m */; };
@@ -175,8 +174,6 @@
 		05820D291E2A6AEC00B4A0B0 /* NewsHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsHomeViewController.m; sourceTree = "<group>"; };
 		05820D2A1E2A6AEC00B4A0B0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		05820D2B1E2A6AEC00B4A0B0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		05820D2E1E2A6AEC00B4A0B0 /* UIFont+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Extend.h"; sourceTree = "<group>"; };
-		05820D2F1E2A6AEC00B4A0B0 /* UIFont+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Extend.m"; sourceTree = "<group>"; };
 		05820D301E2A6AEC00B4A0B0 /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
 		05820D311E2A6AEC00B4A0B0 /* UIImage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extend.m"; sourceTree = "<group>"; };
 		05820D321E2A6AEC00B4A0B0 /* UIScrollView+Refresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Refresh.h"; sourceTree = "<group>"; };
@@ -460,8 +457,6 @@
 		05820D2D1E2A6AEC00B4A0B0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				05820D2E1E2A6AEC00B4A0B0 /* UIFont+Extend.h */,
-				05820D2F1E2A6AEC00B4A0B0 /* UIFont+Extend.m */,
 				05820D301E2A6AEC00B4A0B0 /* UIImage+Extend.h */,
 				05820D311E2A6AEC00B4A0B0 /* UIImage+Extend.m */,
 				05820D321E2A6AEC00B4A0B0 /* UIScrollView+Refresh.h */,
@@ -665,7 +660,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				05820D731E2A6AEC00B4A0B0 /* UIFont+Extend.m in Sources */,
 				05820D761E2A6AEC00B4A0B0 /* UIView+HQExtend.m in Sources */,
 				05820D561E2A6AEC00B4A0B0 /* NSArray+AppFrame.m in Sources */,
 				05820D5E1E2A6AEC00B4A0B0 /* AFBeforeNewsModel.m in Sources */,

@@ -7,7 +7,6 @@
 //
 
 #import "UIViewController+Extend.h"
-#import "UIFont+Extend.h"
 
 @implementation UIViewController (Extend)
 
@@ -18,9 +17,9 @@
     }
 
     UIImage* image = [UIImage imageNamed:k_navi_left_back_image];
-    UIFont* font = [UIFont getFontWithFontName:nil displayStr:(NSString*)backTitle fontSize:17.0f];
+    UIFont* font = UIFontMake(17);
 
-    UIButton* leftTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, font.fontSize.width+image.size.width+5, font.fontSize.height)];
+    UIButton* leftTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 42+image.size.width, 30)];
     leftTopBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
     leftTopBtn.titleLabel.font = font;
     [leftTopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -56,9 +55,9 @@
         }
 
         if ([left isKindOfClass:[NSString class]]) {
-            UIFont* font = [UIFont getFontWithFontName:nil displayStr:(NSString*)left fontSize:17.0f];
+            UIFont* font = UIFontMake(17);
 
-            UIButton* leftTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, font.fontSize.width, font.fontSize.height)];
+            UIButton* leftTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 36, 30)];
             leftTopBtn.titleLabel.font = font;
             [leftTopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [leftTopBtn setTitle:(NSString*)left forState:UIControlStateNormal];
@@ -114,8 +113,8 @@
         }
 
         if ([right isKindOfClass:[NSString class]]) {
-            UIFont* font = [UIFont getFontWithFontName:nil displayStr:(NSString*)right fontSize:17.0f];
-            UIButton* rightTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, font.fontSize.width, font.fontSize.height)];
+            UIFont* font = UIFontMake(17);
+            UIButton* rightTopBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 36, 30)];
             rightTopBtn.titleLabel.font = font;
             [rightTopBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [rightTopBtn setTitle:(NSString*)right forState:UIControlStateNormal];
@@ -158,8 +157,8 @@
 
     if (title != nil) {
         if ([title isKindOfClass:[NSString class]]) {
-            UIFont* font = [UIFont getFontWithFontName:nil displayStr:(NSString*)title fontSize:20.0f];
-            UILabel* lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 10.5, font.fontSize.width, font.fontSize.height)];
+            UIFont* font = UIFontMake(20);
+            UILabel* lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 10.5, SCREEN_WIDTH-88, 30)];
             lab.font = font;
             lab.text = (NSString*)title;
             lab.textColor = [UIColor whiteColor];

@@ -9,7 +9,6 @@
 #ifndef ViewHeader_h
 #define ViewHeader_h
 
-#import "UIFont+Extend.h"
 #import "UIImage+AppFrame.h"
 #import "UIView+HQExtend.h"
 #import "UIViewController+Extend.h"
