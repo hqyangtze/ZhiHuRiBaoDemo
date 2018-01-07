@@ -59,9 +59,7 @@ static NSString* const kCellIdentifier = @"kAFShortNewsTableViewCell";
 
 - (void)setUpNavigationBar{
     _naviBarView = [NavigationBarView getView];
-    _naviBarView.hq_height = 54.0f;
     _naviBarView.backgroundColor = [UIColor clearColor];
-    //_naviBarView.alpha = 0.0f;
     [_naviBarView setCenterTitle:@"今日热闻"];
 }
 

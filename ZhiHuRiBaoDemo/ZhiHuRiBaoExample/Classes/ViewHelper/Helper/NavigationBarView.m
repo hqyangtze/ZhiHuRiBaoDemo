@@ -42,7 +42,7 @@
 + (instancetype)getView{
     NavigationBarView* barView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil] lastObject];
     barView.hq_width = SCREEN_WIDTH;
-    barView.hq_height = 64.0f;
+    barView.hq_height = STATUSBAR_HEIGHT + NAVIGATION_HEIGHT;
     return barView;
 }
 
