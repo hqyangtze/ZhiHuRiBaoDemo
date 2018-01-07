@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SDWebImageManager.h"
+#import <SDWebImage/SDWebImageManager.h>
 
 @interface AFWebImageView : UIImageView
 
@@ -21,7 +21,7 @@
  @param url  下载地址
  @param completedBlock 下载完成回调
  */
-- (void)setImageWithURL:(NSURL *)url completed:(SDWebImageCompletionBlock)completedBlock;
+- (void)setImageWithURL:(NSURL *)url completed:(SDExternalCompletionBlock)completedBlock;
 
 /**
 	下载函数,使用默认的placeholder和选项，支持进度和完成的回调
@@ -29,7 +29,7 @@
  @param progressBlock 下载进度回调
  @param completedBlock 下载完成回调
  */
-- (void)setImageWithURL:(NSURL *)url progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock ;
+- (void)setImageWithURL:(NSURL *)url progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDExternalCompletionBlock)completedBlock ;
 
 /**
 	下载函数

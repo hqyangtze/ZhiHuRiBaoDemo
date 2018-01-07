@@ -53,13 +53,13 @@
 
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self);
-        make.topMargin.equalTo(0.0);
-        make.leftMargin.equalTo(0.0);
+        make.top.equalTo(0.0);
+        make.left.equalTo(0.0);
     }];
     [_textLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.leftMargin.equalTo(self).offset(10);
-        make.rightMargin.equalTo(self).offset(-10);
-        make.bottomMargin.equalTo(self).offset(-22.0);
+        make.left.equalTo(self).offset(10);
+        make.right.equalTo(self).offset(-10);
+        make.bottom.equalTo(self).offset(-22.0);
     }];
 }
 

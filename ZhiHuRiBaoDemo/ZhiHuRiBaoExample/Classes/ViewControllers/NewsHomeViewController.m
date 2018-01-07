@@ -83,6 +83,8 @@ static NSString* const kCellIdentifier = @"kAFShortNewsTableViewCell";
     [_tableView registerNib:[UINib nibWithNibName:@"AFShortNewsTableViewCell" bundle:nil] forCellReuseIdentifier:kCellIdentifier];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = COMMON_BG_COLOR;
+    _tableView.contentInset = UIEdgeInsetsMake(0, 0, SAFEAREA_BOTTOM, 0);
+    _tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, SAFEAREA_BOTTOM, 0);
     [_tableView addRefreshHeaderWithCall:^{
         STRONG(weak_self)
         [strong_weak_self loadDataFromNewtworking];
@@ -100,7 +102,13 @@ static NSString* const kCellIdentifier = @"kAFShortNewsTableViewCell";
     if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         [_tableView setLayoutMargins:UIEdgeInsetsZero];
     }
-
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    _tableView.estimatedRowHeight = 0.0f;
+    _tableView.estimatedSectionFooterHeight = 0.0f;
+    _tableView.estimatedSectionHeaderHeight = 0.0f;
+    if (@available(iOS 11.0, *)) {
+        _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }
     [self.view addSubview:_tableView];
     _tableView.tableHeaderView = _adPagesView;
 

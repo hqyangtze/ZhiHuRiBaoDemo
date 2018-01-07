@@ -57,10 +57,10 @@
     [self setImageWithURL:url placeholderImage:nil options:0 progress:nil completed:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url completed:(SDWebImageCompletionBlock)completedBlock {
+- (void)setImageWithURL:(NSURL *)url completed:(SDExternalCompletionBlock)completedBlock {
     [self setImageWithURL:url placeholderImage:nil options:0 progress:nil completed:completedBlock];
 }
-- (void)setImageWithURL:(NSURL *)url progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock{
+- (void)setImageWithURL:(NSURL *)url progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDExternalCompletionBlock)completedBlock{
     [self setImageWithURL:url placeholderImage:nil options:0 progress:progressBlock completed:completedBlock];
 }
 
@@ -72,7 +72,7 @@
     [self setImageWithURL:url placeholderImage:placeholder options:SDWebImageDelayPlaceholder progress:nil completed:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDWebImageCompletionBlock)completedBlock {
+- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder options:(SDWebImageOptions)options progress:(SDWebImageDownloaderProgressBlock)progressBlock completed:(SDExternalCompletionBlock)completedBlock {
     if(self.needShowActivityIndicatorView){
         [_indicatorView startAnimating];
     }
@@ -84,9 +84,10 @@
     }
     __weak AFWebImageView *wself = self;
     if (url) {
-        _operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options:options progress:progressBlock completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        _operation = [SDWebImageManager.sharedManager loadImageWithURL:url options:options progress:progressBlock completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
+        
             if (!wself) return;
-            dispatch_main_sync_safe(^{
+            dispatch_async(dispatch_get_main_queue(),^{
                 if (!wself) return;
                 if (wself.needShowActivityIndicatorView) {
                     [wself.indicatorView stopAnimating];
