@@ -59,6 +59,7 @@
     footer.triggerAutomaticallyRefreshPercent = 0.0;
     [footer setBackgroundColor:RGBA(200, 200, 200, 0.0)];
     footer.labelLeftInset = BASE_375(30);
+    footer.automaticallyHidden = YES;
     [footer.stateLabel setTextColor:RGB(255, 255, 255)];
     self.mj_footer = footer;
     [self addFooterGradientLayer];
@@ -75,6 +76,7 @@
     footer.ignoredScrollViewContentInsetBottom = 20.0;
     [footer setBackgroundColor:RGBA(200, 200, 200, 0.0)];
     footer.labelLeftInset = BASE_375(30);
+    footer.automaticallyHidden = YES;
     [footer.stateLabel setTextColor:RGB(255, 255, 255)];
     self.mj_footer = footer;
     [self addFooterGradientLayer];
@@ -127,13 +129,17 @@
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = self.mj_header.bounds;
     CGRect frame = gradientLayer.frame;
+    frame.origin.y = -800;
+    frame.size.height = self.mj_header.hq_height + 800;
     gradientLayer.frame = frame;
+
     gradientLayer.colors = @[
-                             (id)RGBA(0, 0, 0, 0.05).CGColor,
-                             (id)RGBA(0, 0, 0, 0.1).CGColor,
-                             (id)RGBA(0, 0, 0, 0.11).CGColor,
+                             (id)RGBA(240, 240, 240, 0.1).CGColor,
+                             (id)RGBA(240, 240, 240, 0.1).CGColor,
+                             (id)RGBA(200, 200, 200, 0.3).CGColor,
+                             (id)RGBA(240, 240, 240, 0.1).CGColor,
                              ];
-    gradientLayer.locations = @[@0.1,@0.8,@0.1];
+    gradientLayer.locations = @[@(0.90),@(0.95),@(0.97)];
 
     gradientLayer.startPoint = CGPointMake(0, 0);
     gradientLayer.endPoint = CGPointMake(0, 1);
@@ -145,13 +151,17 @@
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
     gradientLayer.frame = self.mj_footer.bounds;
     CGRect frame = gradientLayer.frame;
+    frame.size.height = self.mj_footer.hq_height + 800;
     gradientLayer.frame = frame;
+
     gradientLayer.colors = @[
-                             (id)RGBA(0, 0, 0, 0.05).CGColor,
-                             (id)RGBA(0, 0, 0, 0.1).CGColor,
-                             (id)RGBA(0, 0, 0, 0.11).CGColor,
+                             (id)RGBA(240, 240, 240, 0.3).CGColor,
+                             (id)RGBA(200, 200, 200, 0.3).CGColor,
+                             (id)RGBA(230, 230, 230, 0.1).CGColor,
+                             (id)RGBA(255, 255, 255, 0.0).CGColor,
                              ];
-    gradientLayer.locations = @[@0.1,@0.8,@0.1];
+    gradientLayer.locations = @[@(0.01),@(0.023),@(0.08)];
+
     gradientLayer.startPoint = CGPointMake(0, 0);
     gradientLayer.endPoint = CGPointMake(0, 1);
 
